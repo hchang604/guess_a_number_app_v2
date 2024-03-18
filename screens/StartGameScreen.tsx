@@ -2,8 +2,13 @@ import React, {useState} from 'react';
 import {Alert, TextInput, View} from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 import {StyleSheet} from 'react-native';
+import Colors from '../constants/colors';
 
-function StartGameScreen() {
+type StartGameScreenProps = {
+  onConfirmNumber: (confirmedNumber: number) => void;
+};
+
+function StartGameScreen(props: StartGameScreenProps) {
   const [enteredNumber, setEnteredNumber] = useState('');
 
   function numberInputHandler(inputText: string) {
@@ -26,7 +31,7 @@ function StartGameScreen() {
       return;
     }
 
-    console.log('Valid Number');
+    props.onConfirmNumber(chosenNumber);
   }
 
   return (
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginHorizontal: 24,
     padding: 16,
-    backgroundColor: '#4e0329',
+    backgroundColor: Colors.primary800,
     borderRadius: 8,
     /* Android specific styling */
     elevation: 4,
@@ -77,9 +82,9 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     fontSize: 32,
-    borderBottomColor: '#ddb52f',
+    borderBottomColor: Colors.accent500,
     borderBottomWidth: 2,
-    color: '#ddb52f',
+    color: Colors.accent500,
     marginVertical: 8,
     fontWeight: 'bold',
     textAlign: 'center',
