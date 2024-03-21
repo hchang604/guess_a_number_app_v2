@@ -52,10 +52,10 @@ function StartGameScreen(props: StartGameScreenProps) {
         />
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={resetInputHandler} textValue="Reset" />
+            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={confirmInputHandler} textValue="Confirm" />
+            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
           </View>
         </View>
       </Card>
