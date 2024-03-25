@@ -29,6 +29,15 @@ function GameScreen(props: GameScreenProps) {
     }
   }, [currentGuess, props]);
 
+  useEffect(() => {
+    /*
+     * minGuessBoundary and maxGuessBoundary are not created within the component.
+     * Therefore when we restart a game, they need to be reset back to original values.
+     */
+    minGuessBoundary = 1;
+    maxGuessBoundary = 100;
+  }, []);
+
   function nextGuessHandler(direction: 'lower' | 'greater') {
     /* Logic to make sure the user is not cheating */
     if (

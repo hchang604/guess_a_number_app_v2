@@ -10,27 +10,39 @@ export default function App() {
   /* The number you want the computer to guess in the game */
   const [userNumber, setUserNumber] = useState<number | undefined>();
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [roundsCount, setRoundsCount] = useState(0);
 
   function confirmNumberHandler(pickedNumber: number) {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
   }
 
-  function GameOverHandler() {
+  function gameOverHandler() {
     setGameIsOver(true);
+  }
+
+  function restartGameHander() {
+    setUserNumber(undefined);
+    setRoundsCount(0);
   }
 
   let screen = <StartGameScreen onConfirmNumber={confirmNumberHandler} />;
 
   if (userNumber) {
     screen = (
-      <GameScreen userNumber={userNumber} onGameOver={GameOverHandler} />
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
     );
   }
 
   /* Game can only be over if a number has been chosen */
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        onRestartGame={restartGameHander}
+        roundsCount={roundsCount}
+        userNumber={userNumber}
+      />
+    );
   }
 
   return (
