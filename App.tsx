@@ -5,22 +5,11 @@ import {LinearGradient} from 'expo-linear-gradient';
 import GameScreen from './screens/GameScreen';
 import GameOverScreen from './screens/GameOverScreen';
 import Colors from './constants/colors';
-import {useFonts} from 'expo-font';
-import AppLoading from 'expo-app-loading';
 
 export default function App() {
   /* The number you want the computer to guess in the game */
   const [userNumber, setUserNumber] = useState<number | undefined>();
   const [gameIsOver, setGameIsOver] = useState(true);
-
-  const [fontsLoaded] = useFonts({
-    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   function confirmNumberHandler(pickedNumber: number) {
     setUserNumber(pickedNumber);
