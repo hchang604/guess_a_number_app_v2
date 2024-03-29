@@ -19,5 +19,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 5,
     fontWeight: 'bold',
+    maxWidth: '80%',
   },
 });
