@@ -3,7 +3,6 @@ import {
   Image,
   StyleSheet,
   Text,
-  Dimensions,
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
@@ -61,8 +60,6 @@ function GameOverScreen(props: GameOverScreenProps) {
 }
 
 export default GameOverScreen;
-
-const deviceWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   screen: {
